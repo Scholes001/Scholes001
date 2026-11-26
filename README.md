@@ -22,9 +22,9 @@ I build mobile applications with **Flutter** and **Dart**, with a focus on creat
 - 🤝 Happy to share knowledge, support fellow developers, and collaborate on projects where we can learn and build together.
 - 📩 Reach me at **[paulscholes722@gmail.com](mailto:paulscholes722@gmail.com)**.
 
-## 🧰 Tech Stack
 
-<h2>🛠️ Tech Stack & Tools</h2>
+
+<h2> 🧰 Skills & Tools </h2>
 
 <p>
   <img src="https://skillicons.dev/icons?i=flutter,dart,supabase,firebase,python,java,html,css,figma,git,github,vscode&perline=8" />
