@@ -1,0 +1,39 @@
+          ]
+
+          lines = [
+              "| Repository | Description | Language | Stars |",
+              "| --- | --- | --- | ---: |",
+          ]
+
+          if not repos:
+              lines.append("| No public repositories found | | | 0 |")
+          else:
+              for repo in repos:
+                  name = repo["name"].replace("|", "\\|")
+                  description = (repo.get("description") or "No description provided").replace("|", "\\|")
+                  language = repo.get("language") or "—"
+                  lines.append(
+                      f'| [{name}]({repo["html_url"]}) | {description} | {language} | ⭐ {repo["stargazers_count"]} |'
+                  )
+
+          generated = "\n".join(lines)
+          if start not in readme or end not in readme:
+              raise SystemExit("README project markers are missing.")
+
+          before, remainder = readme.split(start, 1)
+          _, after = remainder.split(end, 1)
+          updated = before + start + "\n" + generated + "\n" + end + after
+          readme_path.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit README update if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "No repository changes to publish."
+          else
+            git commit -m "chore: update public projects in profile README"
+            git push
+          fi
