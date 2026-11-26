@@ -1,38 +1,104 @@
 
-          lines = [
-              "| Repository | Description | Language | Stars |",
-              "| --- | --- | --- | ---: |",
+name: Update profile projects
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate project list
+        env:
+          GITHUB_USERNAME: Scholes001
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          from pathlib import Path
+
+          username = os.environ["GITHUB_USERNAME"]
+          path = Path("README.md")
+          readme = path.read_text(encoding="utf-8")
+
+          start = "<!-- PROJECTS:START -->"
+          end = "<!-- PROJECTS:END -->"
+
+          if start not in readme or end not in readme:
+              raise SystemExit("Project markers missing from README.md")
+
+          repos = []
+          page = 1
+
+          while True:
+              url = (
+                  f"https://api.github.com/users/{username}/repos"
+                  f"?type=owner&sort=updated&per_page=100&page={page}"
+              )
+              request = urllib.request.Request(
+                  url,
+                  headers={"User-Agent": "profile-project-updater"}
+              )
+
+              with urllib.request.urlopen(request) as response:
+                  batch = json.loads(response.read())
+
+              if not batch:
+                  break
+
+              repos.extend(batch)
+
+              if len(batch) < 100:
+                  break
+
+              page += 1
+
+          repos = [
+              r for r in repos
+              if not r["private"] and r["name"].lower() != username.lower()
           ]
 
+          lines = [
+              "| Repository | Description | Language | Stars |",
+              "| --- | --- | --- | ---: |"
+          ]
+
+          for r in repos:
+              name = r["name"].replace("|", "\\|")
+              description = (r.get("description") or "No description").replace("|", "\\|")
+              language = r.get("language") or "—"
+
+              lines.append(
+                  f'| [{name}]({r["html_url"]}) | {description} | {language} | ⭐ {r["stargazers_count"]} |'
+              )
+
           if not repos:
-              lines.append("| No public repositories found | | | 0 |")
-          else:
-              for repo in repos:
-                  name = repo["name"].replace("|", "\\|")
-                  description = (repo.get("description") or "No description provided").replace("|", "\\|")
-                  language = repo.get("language") or "—"
-                  lines.append(
-                      f'| [{name}]({repo["html_url"]}) | {description} | {language} | ⭐ {repo["stargazers_count"]} |'
-                  )
+              lines.append("| No public repositories found | — | — | 0 |")
 
-          generated = "\n".join(lines)
-          if start not in readme or end not in readme:
-              raise SystemExit("README project markers are missing.")
+          section = "\n".join(lines)
 
-          before, remainder = readme.split(start, 1)
-          _, after = remainder.split(end, 1)
-          updated = before + start + "\n" + generated + "\n" + end + after
-          readme_path.write_text(updated, encoding="utf-8")
+          before, remaining = readme.split(start, 1)
+          _, after = remaining.split(end, 1)
+
+          updated = before + start + "\n" + section + "\n" + end + after
+          path.write_text(updated, encoding="utf-8")
           PY
 
-      - name: Commit README update if changed
+      - name: Save updated README
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          if git diff --cached --quiet; then
-            echo "No repository changes to publish."
-          else
-            git commit -m "chore: update public projects in profile README"
+          if ! git diff --cached --quiet; then
+            git commit -m "Update public projects automatically"
             git push
           fi
