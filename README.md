@@ -30,7 +30,10 @@ I build mobile applications with **Flutter** and **Dart**, with a focus on creat
   <img src="https://skillicons.dev/icons?i=flutter,dart,supabase,firebase,python,java,html,css,figma,git,github,vscode&perline=8" />
 </p>
 
+## 🚀 My Projects
 
+<!-- PROJECTS:START -->
+<!-- PROJECTS:END -->
 
 ## 📊 GitHub Statistics
 
