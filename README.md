@@ -30,18 +30,11 @@ I build mobile applications with **Flutter** and **Dart**, with a focus on creat
   <img src="https://skillicons.dev/icons?i=flutter,dart,supabase,firebase,python,java,html,css,figma,git,github,vscode&perline=8" />
 </p>
 
-## 🚀 Featured Projects
+## 🚀 My Projects
 
-Here are some projects from my repositories:
-
-| Project | Description |
-| --- | --- |
-| [BookTicket](https://github.com/Scholes001/BookTicket) | A ticket booking application. |
-| [Hotel-booking](https://github.com/Scholes001/Hotel-booking) | A hotel booking application. |
-| [Ecommerce](https://github.com/Scholes001/Ecommerce) | An e-commerce application. |
-| [Coffee-Shop](https://github.com/Scholes001/Coffee-Shop) | A coffee shop application. |
-| [Authentication](https://github.com/Scholes001/Authentication) | Login and sign-up interface pages. |
-| [Todo-list](https://github.com/Scholes001/Todo-list) | A to-do list application. |
+<!-- PROJECTS:START -->
+_Project list will be added automatically by GitHub Actions._
+<!-- PROJECTS:END -->
 
 ## 📊 GitHub Statistics
 
