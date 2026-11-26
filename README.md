@@ -30,22 +30,7 @@ I build mobile applications with **Flutter** and **Dart**, with a focus on creat
   <img src="https://skillicons.dev/icons?i=flutter,dart,supabase,firebase,python,java,html,css,figma,git,github,vscode&perline=8" />
 </p>
 
-## 🚀 My Projects
 
-<!-- PROJECTS:START -->
-| Repository | Description | Language | Stars |
-| --- | --- | --- | ---: |
-| [Inventory-Management-](https://github.com/Scholes001/Inventory-Management-) | An Inventory Management Application | Dart | ⭐ 0 |
-| [Logbook-App](https://github.com/Scholes001/Logbook-App) | No description | Dart | ⭐ 0 |
-| [Expense-Tracker](https://github.com/Scholes001/Expense-Tracker) | Expense tracker App | Dart | ⭐ 0 |
-| [Acadly](https://github.com/Scholes001/Acadly) | An Academic Resource Application | Dart | ⭐ 0 |
-| [Coffee-Shop](https://github.com/Scholes001/Coffee-Shop) | A Coffee Shop Application | C++ | ⭐ 0 |
-| [Ecommerce](https://github.com/Scholes001/Ecommerce) | An Ecommerce Application | HTML | ⭐ 0 |
-| [Hotel-booking](https://github.com/Scholes001/Hotel-booking) | An Hotel Booking Application | Dart | ⭐ 0 |
-| [Authentication](https://github.com/Scholes001/Authentication) | Login and Signup pages | C++ | ⭐ 0 |
-| [Todo-list](https://github.com/Scholes001/Todo-list) | Todolist Application | C++ | ⭐ 0 |
-| [BookTicket](https://github.com/Scholes001/BookTicket) | A Ticket booking Application | Dart | ⭐ 0 |
-<!-- PROJECTS:END -->
 
 ## 📊 GitHub Statistics
 
@@ -56,16 +41,4 @@ I build mobile applications with **Flutter** and **Dart**, with a focus on creat
 
 <img src="https://streak-stats.demolab.com?user=Scholes001&theme=tokyonight&hide_border=true" alt="GitHub streak" />
 
-</div>
 
-## 🤝 Connect With Me
-
-- GitHub: [@Scholes001](https://github.com/Scholes001)
-
----
-
-<div align="center">
-
-**Thanks for visiting my profile! ⭐ Feel free to explore my repositories.**
-
-</div>
